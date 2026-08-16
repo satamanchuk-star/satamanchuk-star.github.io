@@ -100,10 +100,6 @@
     .burst-note strong { display:block; font-size:clamp(16px,4.8vw,21px); line-height:1.18; }
     .burst-note.show { opacity:1; transform:translateY(0); transition:.35s ease; }
     .dinos-found .burst-note { top:auto; bottom:5%; left:6%; right:6%; min-height:76px; }
-    .progress { position:absolute; z-index:11; left:21px; right:21px; bottom:18px; display:flex; gap:5px; opacity:0; transition:.3s ease; }
-    .progress.show { opacity:1; }
-    .progress i { height:4px; flex:1; border-radius:4px; background:rgba(255,239,190,.32); }
-    .progress i.on { background:#ffd165; }
     .complete-badge { position:absolute; z-index:12; inset:0; display:grid; place-items:center; padding:22px; background:rgba(16,25,11,.58); opacity:0; visibility:hidden; transition:.35s ease; }
     .complete-badge.show { opacity:1; visibility:visible; }
     .complete-badge div { max-width:280px; padding:22px; border:1px solid rgba(255,233,159,.65); border-radius:22px; background:rgba(39,61,28,.92); text-align:center; }
@@ -145,7 +141,6 @@
       <img class="vanya vanya-brush" src="assets/vanya-brush-small.webp" width="506" height="760" decoding="async" fetchpriority="low" alt="Ваня-палеонтолог чистит находку кисточкой">
       <img class="vanya vanya-wave" src="assets/vanya-wave-small.webp" width="506" height="760" decoding="async" fetchpriority="low" alt="Ваня радуется открытию">
       <div class="burst-note" id="burstNote" aria-live="polite" aria-atomic="true"><small id="noteKicker"></small><strong id="noteText"></strong></div>
-      <div class="progress" id="progress" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
       <section class="finale" id="finale" aria-label="Приглашение">
         <img class="cart" src="assets/finale-cart-small.webp" width="900" height="600" decoding="async" fetchpriority="low" alt="Ваня и маленький динозавр везут праздничный торт">
         <article class="invite">
@@ -186,7 +181,6 @@
       const noteText = document.getElementById('noteText');
       const finale = document.getElementById('finale');
       const replay = document.getElementById('replay');
-      const progress = document.getElementById('progress');
       const completeBadge = document.getElementById('completeBadge');
       const again = document.getElementById('again');
       let muted = false, revealed = false, taps = 0, audio;
@@ -209,7 +203,6 @@
       function roar(){ tone(132,.36,'sawtooth',.07,-68); tone(198,.22,'triangle',.04,-90); }
       function tinyMusic(){ [262,330,392,523].forEach((f,i)=>setTimeout(()=>tone(f,.15,'triangle',.038,12),i*115)); }
       function initAudio(){ if (!audio && !muted) audio = new (window.AudioContext || window.webkitAudioContext)(); if(audio && audio.state==='suspended') audio.resume(); }
-      function setProgress(count){ [...progress.children].forEach((item,index)=>item.classList.toggle('on',index<count)); }
       function showNote(kicker,text){ noteKicker.textContent=kicker; noteText.textContent=text; note.classList.add('show'); }
       function hideNote(){ note.classList.remove('show'); }
       function schedule(fn,delay){ const timer=setTimeout(fn,delay); sequenceTimers.push(timer); }
@@ -234,20 +227,20 @@
       }
       function revealEgg() {
         if(revealed) return; revealed=true; stage.classList.add('egg-ready'); egg.classList.add('active'); egg.setAttribute('aria-label','Разбить яйцо, ударов 0 из 3'); tapCount.classList.add('show');
-        setProgress(2); storyTitle.textContent='Помоги Ване разбить яйцо'; storyText.textContent='Нажми на светящуюся скорлупу три раза.'; showNote('Находка расчищена','Под песком оказалось огромное яйцо!'); schedule(hideNote,1650); tone(480,.18,'triangle',.045,100);
+        storyTitle.textContent='Помоги Ване разбить яйцо'; storyText.textContent='Нажми на светящуюся скорлупу три раза.'; showNote('Находка расчищена','Под песком оказалось огромное яйцо!'); schedule(hideNote,1650); tone(480,.18,'triangle',.045,100);
       }
       function hatch(){
         clearSequence(); egg.classList.remove('active'); tapCount.classList.remove('show'); stage.classList.add('shake'); showNote('Скорлупа трескается','Кто же спрятался внутри?');
-        schedule(()=>{ stage.classList.remove('shake'); stage.classList.add('hatching','dinos-found'); setProgress(3); showNote('Невероятная находка','В одном яйце — целых пять динозавров!'); roar(); tinyMusic(); },1450);
+        schedule(()=>{ stage.classList.remove('shake'); stage.classList.add('hatching','dinos-found'); showNote('Невероятная находка','В одном яйце — целых пять динозавров!'); roar(); tinyMusic(); },1450);
         schedule(()=>{ showNote('Экспедиция Вани','Вот как Ваня нашёл пять новых друзей.'); },4100);
         schedule(()=>{ showNote('Последний сюрприз','Динозавры привезли приглашение на праздник!'); },6450);
-        schedule(()=>{ hideNote(); setProgress(4); stage.classList.add('finale-visible'); finale.classList.add('show'); progress.classList.remove('show'); localStorage.setItem('vanya-expedition-complete','1'); },8450);
+        schedule(()=>{ hideNote(); stage.classList.add('finale-visible'); finale.classList.add('show'); localStorage.setItem('vanya-expedition-complete','1'); },8450);
       }
       function startGame(){
-        clearSequence(); initAudio(); intro.style.opacity='0'; intro.style.visibility='hidden'; stage.classList.remove('egg-ready'); sandWrap.style.removeProperty('opacity'); sandWrap.style.removeProperty('pointer-events'); stage.classList.add('game-on'); setProgress(1); progress.classList.add('show'); resizeCanvas(); tinyMusic();
+        clearSequence(); initAudio(); intro.style.opacity='0'; intro.style.visibility='hidden'; stage.classList.remove('egg-ready'); sandWrap.style.removeProperty('opacity'); sandWrap.style.removeProperty('pointer-events'); stage.classList.add('game-on'); resizeCanvas(); tinyMusic();
       }
       function reset(){
-        clearSequence(); localStorage.removeItem('vanya-expedition-complete'); completeBadge.classList.remove('show'); finale.classList.remove('show'); hideNote(); stage.classList.remove('game-on','hatching','dinos-found','finale-visible','shake','egg-ready'); intro.style.opacity='1'; intro.style.visibility='visible'; revealed=false; taps=0; storyTitle.textContent='Смахни песок с находки'; storyText.textContent='Проведи пальцем по яйцу — Ваня уже готов к открытию.'; egg.dataset.label='Разбей яйцо · 0/3'; egg.setAttribute('aria-label','Разбить яйцо, ударов 0 из 3'); tapText.textContent='Удары: 0/3'; dots.forEach(d=>d.classList.remove('done')); egg.classList.remove('active'); tapCount.classList.remove('show'); sandGuide.classList.remove('hide'); sandWrap.style.removeProperty('opacity'); sandWrap.style.removeProperty('pointer-events'); setProgress(1); progress.classList.remove('show');
+        clearSequence(); localStorage.removeItem('vanya-expedition-complete'); completeBadge.classList.remove('show'); finale.classList.remove('show'); hideNote(); stage.classList.remove('game-on','hatching','dinos-found','finale-visible','shake','egg-ready'); intro.style.opacity='1'; intro.style.visibility='visible'; revealed=false; taps=0; storyTitle.textContent='Смахни песок с находки'; storyText.textContent='Проведи пальцем по яйцу — Ваня уже готов к открытию.'; egg.dataset.label='Разбей яйцо · 0/3'; egg.setAttribute('aria-label','Разбить яйцо, ударов 0 из 3'); tapText.textContent='Удары: 0/3'; dots.forEach(d=>d.classList.remove('done')); egg.classList.remove('active'); tapCount.classList.remove('show'); sandGuide.classList.remove('hide'); sandWrap.style.removeProperty('opacity'); sandWrap.style.removeProperty('pointer-events');
       }
       start.addEventListener('click', startGame);
       sound.addEventListener('click',()=>{ muted=!muted; sound.textContent=muted?'Звук: выкл':'Звук: вкл'; sound.setAttribute('aria-pressed',String(!muted)); if(!muted) {initAudio();tone(523,.12,'triangle',.035,20);} });
