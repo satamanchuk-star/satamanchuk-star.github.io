@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#23341d">
+  <meta name="description" content="Ваня приглашает на динозавровый день рождения: 29 августа, начало в 14:00">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://satamanchuk-star.github.io/">
+  <link rel="image_src" href="https://satamanchuk-star.github.io/assets/share-preview.jpg?v=2">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Приглашение Вани">
+  <meta property="og:url" content="https://satamanchuk-star.github.io/">
+  <meta property="og:title" content="Ваня приглашает на динозавровый день рождения!">
+  <meta property="og:description" content="29 августа · начало в 14:00 · СНТ «Химик», участок 113">
+  <meta property="og:image" content="https://satamanchuk-star.github.io/assets/share-preview.jpg?v=2">
+  <meta property="og:image:secure_url" content="https://satamanchuk-star.github.io/assets/share-preview.jpg?v=2">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ваня с динозавром приглашает на день рождения — 4 года">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ваня приглашает на динозавровый день рождения!">
+  <meta name="twitter:description" content="29 августа · начало в 14:00 · СНТ «Химик», участок 113">
+  <meta name="twitter:image" content="https://satamanchuk-star.github.io/assets/share-preview.jpg?v=2">
+  <title>Ваня приглашает — динозавровый день рождения</title>
+  <style>
+    :root { --ink:#f8edcf; --paper:#fff4d5; --brown:#5b3922; --moss:#29452e; --amber:#e5a53a; --orange:#d66d22; }
+    * { box-sizing:border-box; }
+    html,body { margin:0; min-height:100%; background:#182316; font-family: ui-rounded, "Trebuchet MS", Arial, sans-serif; color:var(--ink); }
+    button { font:inherit; }
+    .page { min-height:100svh; display:grid; place-items:center; padding:0; overflow:hidden; }
+    .stage { position:relative; isolation:isolate; width:min(100vw, 470px); height:100svh; max-height:940px; overflow:hidden; background:#26371c; box-shadow:0 16px 60px rgba(0,0,0,.44); }
+    .scene { position:absolute; inset:0; background-position:center; background-size:cover; transition:opacity .95s ease, transform 1.15s ease, filter .75s ease; }
+    .dig-scene { background-image:url("assets/amber-dig-scene.jpg"); }
+    .hatch-scene { background-image:url("assets/hatch-scene.jpg"); opacity:0; transform:scale(1.08); }
+    .shade { position:absolute; inset:0; z-index:2; background:rgba(10,18,8,.28); pointer-events:none; transition:background .8s ease; }
+    .topline { position:absolute; z-index:10; top:max(18px, env(safe-area-inset-top)); left:18px; right:18px; display:flex; justify-content:space-between; gap:10px; align-items:center; transition:opacity .4s ease; }
+    .finale-visible .topline { opacity:0; pointer-events:none; }
+    .brand { font-size:11px; text-transform:uppercase; letter-spacing:.16em; font-weight:800; text-shadow:0 2px 5px #17200f; }
+    .quiet, .skip { appearance:none; border:1px solid rgba(255,244,213,.55); background:rgba(25,42,23,.55); color:var(--ink); border-radius:999px; padding:8px 11px; font-size:12px; cursor:pointer; backdrop-filter:blur(6px); }
+    .quiet:focus-visible,.skip:focus-visible,.main-button:focus-visible,.minor-button:focus-visible,.egg-hit:focus-visible { outline:3px solid #fff; outline-offset:3px; }
+    .intro { position:absolute; inset:0; z-index:9; display:flex; flex-direction:column; justify-content:flex-end; padding:0 22px 31px; background:rgba(12,18,8,.23); transition:opacity .45s ease, visibility .45s ease; }
+    .eyebrow { margin:0 0 9px; color:#ffd873; font-size:12px; font-weight:900; letter-spacing:.16em; text-transform:uppercase; }
+    h1 { max-width:310px; margin:0; color:#fff4d5; font-size:clamp(35px,9vw,46px); line-height:.94; letter-spacing:-.055em; text-shadow:0 3px 12px rgba(31,20,6,.56); }
+    .intro p { max-width:290px; margin:14px 0 21px; font-size:16px; line-height:1.35; text-shadow:0 2px 7px rgba(31,20,6,.8); }
+    .main-button { appearance:none; border:0; border-radius:16px; min-height:57px; padding:14px 20px; cursor:pointer; background:var(--amber); color:#2a2417; font-weight:900; font-size:16px; box-shadow:0 5px 0 #9d6520,0 11px 22px rgba(9,12,5,.32); }
+    .main-button:active { transform:translateY(3px); box-shadow:0 2px 0 #9d6520; }
+    .story-copy { position:absolute; z-index:8; top:max(86px, calc(env(safe-area-inset-top) + 68px)); left:16px; right:16px; text-align:center; opacity:0; transform:translateY(-8px); transition:.4s ease; pointer-events:none; }
+    .story-copy strong { display:block; max-width:340px; margin:auto; font-size:clamp(21px,6.2vw,29px); line-height:1.06; text-shadow:0 2px 9px #24220e; }
+    .story-copy span { display:block; max-width:330px; margin:8px auto 0; font-size:clamp(13px,3.9vw,16px); line-height:1.28; text-shadow:0 2px 9px #24220e; }
+    .game-on .story-copy { opacity:1; transform:none; }
+    .sand-wrap { position:absolute; z-index:7; left:29%; top:49%; width:60%; height:39%; border:2px solid rgba(255,226,151,.72); border-radius:47% 49% 43% 42%; overflow:hidden; opacity:0; transition:opacity .35s ease; touch-action:none; box-shadow:0 0 0 7px rgba(82,53,18,.24); }
+    .game-on .sand-wrap { opacity:1; }
+    .egg-ready .sand-wrap { opacity:0; pointer-events:none; }
+    #sand { width:100%; height:100%; display:block; cursor:crosshair; }
+    .sand-guide { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; padding:20px; color:#fff4d5; text-align:center; font-size:17px; font-weight:900; line-height:1.08; text-shadow:0 2px 4px rgba(58,33,10,.88); pointer-events:none; transition:opacity .2s ease; }
+    .sand-guide .finger { display:block; font-size:35px; line-height:1; animation:swipe 1.25s ease-in-out infinite; }
+    .sand-guide small { display:block; margin-top:2px; font-size:12px; font-weight:700; }
+    .sand-guide.hide { opacity:0; }
+    .egg-hit { position:absolute; z-index:6; left:29%; top:49%; width:60%; height:39%; opacity:0; border:0; border-radius:48%; background:transparent; cursor:pointer; transform:scale(.82); pointer-events:none; }
+    .egg-hit.active { pointer-events:auto; opacity:1; transform:scale(1); }
+    .egg-hit.active:after { content:attr(data-label); position:absolute; left:50%; bottom:9%; translate:-50% 0; width:max-content; border:2px solid rgba(255,234,164,.8); border-radius:999px; padding:9px 13px; color:#fff4d5; background:rgba(55,62,23,.88); font-size:14px; font-weight:900; box-shadow:0 3px 10px rgba(26,16,4,.42); animation:pulse 1.3s ease-in-out infinite; }
+    .tap-count { display:none; }
+    .tap-count.show { opacity:1; }
+    .tap-count i { width:12px; height:12px; border-radius:50%; border:2px solid #fff0c0; background:rgba(44,49,23,.7); box-shadow:0 1px 5px #30220b; }
+    .tap-count i.done { background:#ffd467; box-shadow:0 0 12px #ffc745; }
+    .vanya { position:absolute; z-index:5; object-fit:contain; pointer-events:none; filter:drop-shadow(0 7px 9px rgba(38,22,6,.28)); }
+    .vanya-brush { left:-7%; bottom:5.5%; width:56%; opacity:0; transform-origin:52% 76%; }
+    .game-on .vanya-brush { opacity:0; animation:none; }
+    .vanya-wave { left:5%; bottom:4%; width:46%; opacity:0; transform-origin:55% 83%; }
+    .hatching .vanya-brush { opacity:0; animation:none; }
+    .hatching .vanya-wave { opacity:0; }
+    .dinos-found .vanya-wave { opacity:1; animation:hop .7s ease-in-out 2; transition:opacity .55s .55s ease; }
+    .hatching .dig-scene { opacity:0; transform:scale(1.06); filter:brightness(1.55); }
+    .hatching .hatch-scene { opacity:1; transform:scale(1); }
+    .hatching .shade { background:rgba(10,18,8,.14); }
+    .hatching .story-copy { opacity:0; }
+    .finale { position:absolute; z-index:14; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:0 16px 22px; opacity:0; visibility:hidden; transition:opacity .7s ease,visibility .7s ease; background:rgba(7,15,9,.34); }
+    .finale.show { opacity:1; visibility:visible; }
+    .cart { position:absolute; width:88%; max-height:39%; object-fit:contain; left:6%; top:8%; opacity:0; transform:translateX(-114%); transition:transform 1.05s cubic-bezier(.17,.85,.29,1.12),opacity .35s ease; pointer-events:none; }
+    .finale.show .cart { opacity:1; transform:translateX(0); }
+    .invite { position:relative; padding:20px 18px 16px; border-radius:24px; background:var(--paper); color:var(--brown); box-shadow:0 9px 24px rgba(14,16,6,.42); opacity:0; transform:translateY(26px); transition:transform .65s .55s ease,opacity .5s .55s ease; }
+    .finale.show .invite { opacity:1; transform:none; }
+    .invite .eyebrow { color:#996019; margin-bottom:7px; font-size:10px; }
+    .invite h2 { margin:0; font-size:26px; letter-spacing:-.045em; line-height:1; }
+    .invite .lead { margin:10px 0 12px; font-size:14px; line-height:1.32; }
+    .event { display:grid; grid-template-columns:1fr; gap:7px; margin:0 0 12px; padding:11px 0; border-top:1px solid #ddc590; border-bottom:1px solid #ddc590; font-size:14px; line-height:1.24; }
+    .event b { display:block; font-size:15px; }
+    .bring { margin:0 0 13px; font-size:12px; line-height:1.35; color:#704d31; }
+    .actions { display:grid; grid-template-columns:1fr; gap:9px; }
+    .minor-button { display:grid; place-items:center; min-height:44px; text-align:center; border:0; border-radius:12px; background:#e8c675; color:#3e2b18; text-decoration:none; font-size:12px; font-weight:850; cursor:pointer; }
+    .minor-button.alt { background:#324f2d; color:#fff4d5; }
+    .replay { appearance:none; margin-top:11px; border:0; background:transparent; color:#6c4a2d; font-size:12px; text-decoration:underline; cursor:pointer; }
+    .burst-note { position:absolute; z-index:13; left:10%; right:10%; top:21%; min-height:82px; display:flex; flex-direction:column; justify-content:center; padding:12px 16px 14px; border:1px solid rgba(255,225,143,.45); border-radius:18px; background:rgba(35,55,27,.91); text-align:center; line-height:1.18; opacity:0; transform:translateY(-10px); pointer-events:none; box-shadow:0 9px 24px rgba(12,17,7,.32); backdrop-filter:blur(7px); }
+    .burst-note small { display:block; margin-bottom:5px; color:#ffd873; font-size:10px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
+    .burst-note strong { display:block; font-size:clamp(16px,4.8vw,21px); line-height:1.18; }
+    .burst-note.show { opacity:1; transform:translateY(0); transition:.35s ease; }
+    .progress { position:absolute; z-index:11; left:21px; right:21px; bottom:18px; display:flex; gap:5px; opacity:0; transition:.3s ease; }
+    .progress.show { opacity:1; }
+    .progress i { height:4px; flex:1; border-radius:4px; background:rgba(255,239,190,.32); }
+    .progress i.on { background:#ffd165; }
+    .complete-badge { position:absolute; z-index:12; inset:0; display:grid; place-items:center; padding:22px; background:rgba(16,25,11,.58); opacity:0; visibility:hidden; transition:.35s ease; }
+    .complete-badge.show { opacity:1; visibility:visible; }
+    .complete-badge div { max-width:280px; padding:22px; border:1px solid rgba(255,233,159,.65); border-radius:22px; background:rgba(39,61,28,.92); text-align:center; }
+    .complete-badge p { margin:0 0 15px; font-size:18px; font-weight:900; line-height:1.25; }
+    .shake { animation:shake .58s ease-in-out; }
+    @keyframes pulse { 50% { transform:scale(1.08); opacity:.22; } }
+    @keyframes brush { 0%,100% { transform:rotate(-2deg) translateY(0); } 50% { transform:rotate(3deg) translateY(4px); } }
+    @keyframes hop { 50% { transform:translateY(-16px) rotate(-2deg); } }
+    @keyframes swipe { 0%,100% { transform:translateX(-17px) rotate(-15deg); } 50% { transform:translateX(17px) rotate(15deg); } }
+    @keyframes shake { 20% { transform:translateX(-5px) rotate(-.7deg); } 40% { transform:translateX(5px) rotate(.7deg); } 60% { transform:translateX(-3px); } 80% { transform:translateX(3px); } }
+    @media (prefers-reduced-motion:reduce) { *,*:before,*:after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }
+    @media (max-height:640px) { .intro { padding:0 18px 14px; } h1 { font-size:clamp(27px,9vh,38px); } .intro p { margin:8px 0 12px; font-size:14px; } .main-button { min-height:46px; padding:10px 16px; } .story-copy { top:72px; } .story-copy strong { font-size:20px; } .story-copy span { font-size:13px; } .burst-note { top:18%; min-height:72px; padding:10px 13px; } .burst-note strong { font-size:16px; } .finale { display:block; overflow-y:auto; padding:0 12px 12px; } .cart { position:relative; top:auto; left:9%; width:82%; height:150px; max-height:none; margin:8px 0 4px; } .invite { padding:15px 16px 13px; } .invite .lead { margin:7px 0 9px; } .event { margin-bottom:9px; padding:8px 0; } .bring { margin-bottom:10px; } }
+    @media (min-width:600px) { .page { padding:18px; } .stage { height:min(92svh,900px); border-radius:28px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="stage" id="stage" aria-label="Интерактивное приглашение на день рождения Вани">
+      <div class="scene dig-scene" aria-hidden="true"></div>
+      <div class="scene hatch-scene" aria-hidden="true"></div>
+      <div class="shade" aria-hidden="true"></div>
+      <header class="topline">
+        <span class="brand">Экспедиция 04</span>
+        <button class="quiet" id="sound" type="button" aria-pressed="true">Звук: вкл</button>
+      </header>
+      <section class="intro" id="intro">
+        <p class="eyebrow">Срочное сообщение из раскопок</p>
+        <h1>Ваня нашёл<br>загадочное яйцо!</h1>
+        <p>Помоги юному палеонтологу узнать, кто спрятался внутри.</p>
+        <button class="main-button" id="start" type="button">Начать экспедицию</button>
+      </section>
+      <section class="story-copy" aria-live="polite">
+        <strong id="storyTitle">Смахни песок с находки</strong>
+        <span id="storyText">Проведи пальцем по яйцу — Ваня уже готов к открытию.</span>
+      </section>
+      <div class="sand-wrap" id="sandWrap"><canvas id="sand" aria-label="Потри песок пальцем, чтобы открыть яйцо"></canvas><div class="sand-guide" id="sandGuide"><span class="finger">☝</span><span>Смахни песок</span><small>проведи пальцем по яйцу</small></div></div>
+      <button class="egg-hit" id="egg" type="button" data-label="Разбей яйцо · 0/3" aria-label="Разбить яйцо"></button>
+      <div class="tap-count" id="tapCount" aria-label="Нужно три касания"><span id="tapText">Удары: 0/3</span><i></i><i></i><i></i></div>
+      <img class="vanya vanya-brush" src="assets/vanya-brush-small.png" alt="Ваня-палеонтолог чистит находку кисточкой">
+      <img class="vanya vanya-wave" src="assets/vanya-wave-small.png" alt="Ваня радуется открытию">
+      <div class="burst-note" id="burstNote" aria-live="polite" aria-atomic="true"><small id="noteKicker"></small><strong id="noteText"></strong></div>
+      <div class="progress" id="progress" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+      <section class="finale" id="finale" aria-label="Приглашение">
+        <img class="cart" src="assets/finale-cart-small.png" alt="Ваня и маленький динозавр везут праздничный торт">
+        <article class="invite">
+          <p class="eyebrow">Раскопки завершены</p>
+          <h2>Ване — 4 года!</h2>
+          <p class="lead">Ваня приглашает тебя на свой динозавровый день рождения.</p>
+          <div class="event">
+            <div><b>29 августа, суббота</b>14:00</div>
+            <div><b>СНТ «Химик», участок 113</b>Ленинский городской округ, Московская область</div>
+          </div>
+          <p class="bring">С собой — хорошее настроение. А если захочется, всё, что связано с динозаврами!</p>
+          <div class="actions">
+            <a class="minor-button alt" target="_blank" rel="noopener" href="https://yandex.ru/maps/?text=%D0%A1%D0%9D%D0%A2%20%D0%A5%D0%B8%D0%BC%D0%B8%D0%BA%2C%20%D1%83%D1%87%D0%B0%D1%81%D1%82%D0%BE%D0%BA%20113%2C%20%D0%9B%D0%B5%D0%BD%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D1%81%D0%BA%D0%BE%D0%B9%20%D0%BE%D0%BA%D1%80%D1%83%D0%B3">Построить маршрут</a>
+          </div>
+          <button class="replay" id="replay" type="button">Пройти экспедицию ещё раз</button>
+        </article>
+      </section>
+      <section class="complete-badge" id="completeBadge" aria-label="Экспедиция уже пройдена"><div><p>Ваня снова ждёт тебя в экспедиции.</p><button class="main-button" id="again" type="button">Пройти ещё раз</button></div></section>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const stage = document.getElementById('stage');
+      const intro = document.getElementById('intro');
+      const start = document.getElementById('start');
+      const sound = document.getElementById('sound');
+      const sand = document.getElementById('sand');
+      const sandWrap = document.getElementById('sandWrap');
+      const sandGuide = document.getElementById('sandGuide');
+      const egg = document.getElementById('egg');
+      const tapCount = document.getElementById('tapCount');
+      const tapText = document.getElementById('tapText');
+      const dots = [...tapCount.querySelectorAll('i')];
+      const storyTitle = document.getElementById('storyTitle');
+      const storyText = document.getElementById('storyText');
+      const note = document.getElementById('burstNote');
+      const noteKicker = document.getElementById('noteKicker');
+      const noteText = document.getElementById('noteText');
+      const finale = document.getElementById('finale');
+      const replay = document.getElementById('replay');
+      const progress = document.getElementById('progress');
+      const completeBadge = document.getElementById('completeBadge');
+      const again = document.getElementById('again');
+      let muted = false, revealed = false, taps = 0, audio;
+      let scratched = 0, drawing = false, last = null;
+      let sequenceTimers = [];
+      const ctx = sand.getContext('2d', { willReadFrequently:true });
+
+      function tone(freq, duration=.12, type='sine', volume=.035, slide=0) {
+        if (muted || !audio) return;
+        const osc = audio.createOscillator(), gain = audio.createGain();
+        osc.type = type; osc.frequency.setValueAtTime(freq, audio.currentTime);
+        if (slide) osc.frequency.exponentialRampToValueAtTime(Math.max(20, freq + slide), audio.currentTime + duration);
+        gain.gain.setValueAtTime(.0001, audio.currentTime);
+        gain.gain.exponentialRampToValueAtTime(volume, audio.currentTime + .012);
+        gain.gain.exponentialRampToValueAtTime(.0001, audio.currentTime + duration);
+        osc.connect(gain).connect(audio.destination); osc.start(); osc.stop(audio.currentTime + duration + .03);
+      }
+      function brushSound(){ tone(220,.055,'triangle',.025,-30); }
+      function crackSound(){ tone(100,.17,'sawtooth',.06,230); tone(62,.22,'triangle',.05,-20); }
+      function roar(){ tone(132,.36,'sawtooth',.07,-68); tone(198,.22,'triangle',.04,-90); }
+      function tinyMusic(){ [262,330,392,523].forEach((f,i)=>setTimeout(()=>tone(f,.15,'triangle',.038,12),i*115)); }
+      function initAudio(){ if (!audio && !muted) audio = new (window.AudioContext || window.webkitAudioContext)(); if(audio && audio.state==='suspended') audio.resume(); }
+      function setProgress(count){ [...progress.children].forEach((item,index)=>item.classList.toggle('on',index<count)); }
+      function showNote(kicker,text){ noteKicker.textContent=kicker; noteText.textContent=text; note.classList.add('show'); }
+      function hideNote(){ note.classList.remove('show'); }
+      function schedule(fn,delay){ const timer=setTimeout(fn,delay); sequenceTimers.push(timer); }
+      function clearSequence(){ sequenceTimers.forEach(clearTimeout); sequenceTimers=[]; }
+      function resizeCanvas() {
+        const rect = sand.getBoundingClientRect(), scale = Math.min(devicePixelRatio || 1, 2);
+        sand.width = Math.floor(rect.width * scale); sand.height = Math.floor(rect.height * scale); ctx.setTransform(scale,0,0,scale,0,0);
+        ctx.fillStyle = '#c9954e'; ctx.fillRect(0,0,rect.width,rect.height);
+        for(let i=0;i<720;i++) { ctx.fillStyle = i%3 ? 'rgba(109,69,25,.16)' : 'rgba(255,223,151,.19)'; const r=Math.random()*2.1+.5; ctx.beginPath(); ctx.arc(Math.random()*rect.width,Math.random()*rect.height,r,0,Math.PI*2); ctx.fill(); }
+        scratched=0;
+      }
+      function scratch(e) {
+        if(!drawing || revealed) return;
+        sandGuide.classList.add('hide');
+        const p=e.touches ? e.touches[0] : e, rect=sand.getBoundingClientRect();
+        const point={x:p.clientX-rect.left,y:p.clientY-rect.top};
+        ctx.globalCompositeOperation='destination-out'; ctx.lineWidth=42; ctx.lineCap='round'; ctx.lineJoin='round';
+        ctx.beginPath(); if(last){ ctx.moveTo(last.x,last.y); ctx.lineTo(point.x,point.y); } else {ctx.arc(point.x,point.y,22,0,Math.PI*2);} ctx.stroke();
+        last=point; scratched++;
+        if(scratched%10===0) brushSound();
+        if(scratched>60 && scratched%20===0) { const data=ctx.getImageData(0,0,sand.width,sand.height).data; let clear=0; for(let i=3;i<data.length;i+=32) if(data[i]<20) clear++; if(clear/(data.length/32)>.42) revealEgg(); }
+      }
+      function revealEgg() {
+        if(revealed) return; revealed=true; stage.classList.add('egg-ready'); egg.classList.add('active'); egg.setAttribute('aria-label','Разбить яйцо, ударов 0 из 3'); tapCount.classList.add('show');
+        setProgress(2); storyTitle.textContent='Помоги Ване разбить яйцо'; storyText.textContent='Нажми на светящуюся скорлупу три раза.'; showNote('Находка расчищена','Под песком оказалось огромное яйцо!'); schedule(hideNote,1650); tone(480,.18,'triangle',.045,100);
+      }
+      function hatch(){
+        clearSequence(); egg.classList.remove('active'); tapCount.classList.remove('show'); stage.classList.add('shake'); showNote('Скорлупа трескается','Кто же спрятался внутри?');
+        schedule(()=>{ stage.classList.remove('shake'); stage.classList.add('hatching','dinos-found'); setProgress(3); showNote('Невероятная находка','В одном яйце — целых пять динозавров!'); roar(); tinyMusic(); },1450);
+        schedule(()=>{ showNote('Экспедиция Вани','Вот как Ваня нашёл пятерых новых друзей.'); },4100);
+        schedule(()=>{ showNote('Последний сюрприз','Динозавры привезли приглашение на праздник!'); },6450);
+        schedule(()=>{ hideNote(); setProgress(4); stage.classList.add('finale-visible'); finale.classList.add('show'); progress.classList.remove('show'); localStorage.setItem('vanya-expedition-complete','1'); },8450);
+      }
+      function startGame(){
+        clearSequence(); initAudio(); intro.style.opacity='0'; intro.style.visibility='hidden'; stage.classList.remove('egg-ready'); sandWrap.style.removeProperty('opacity'); sandWrap.style.removeProperty('pointer-events'); stage.classList.add('game-on'); setProgress(1); progress.classList.add('show'); resizeCanvas(); tinyMusic();
+      }
+      function reset(){
+        clearSequence(); localStorage.removeItem('vanya-expedition-complete'); completeBadge.classList.remove('show'); finale.classList.remove('show'); hideNote(); stage.classList.remove('game-on','hatching','dinos-found','finale-visible','shake','egg-ready'); intro.style.opacity='1'; intro.style.visibility='visible'; revealed=false; taps=0; storyTitle.textContent='Смахни песок с находки'; storyText.textContent='Проведи пальцем по яйцу — Ваня уже готов к открытию.'; egg.dataset.label='Разбей яйцо · 0/3'; egg.setAttribute('aria-label','Разбить яйцо, ударов 0 из 3'); tapText.textContent='Удары: 0/3'; dots.forEach(d=>d.classList.remove('done')); egg.classList.remove('active'); tapCount.classList.remove('show'); sandGuide.classList.remove('hide'); sandWrap.style.removeProperty('opacity'); sandWrap.style.removeProperty('pointer-events'); setProgress(1); progress.classList.remove('show');
+      }
+      start.addEventListener('click', startGame);
+      sound.addEventListener('click',()=>{ muted=!muted; sound.textContent=muted?'Звук: выкл':'Звук: вкл'; sound.setAttribute('aria-pressed',String(!muted)); if(!muted) {initAudio();tone(523,.12,'triangle',.035,20);} });
+      sand.addEventListener('pointerdown',e=>{drawing=true;last=null;sand.setPointerCapture(e.pointerId);scratch(e);});
+      sand.addEventListener('pointermove',scratch); sand.addEventListener('pointerup',()=>{drawing=false;last=null;}); sand.addEventListener('pointercancel',()=>{drawing=false;last=null;});
+      egg.addEventListener('click',()=>{ if(!revealed || taps>=3) return; initAudio(); taps++; egg.dataset.label='Разбей яйцо · '+taps+'/3'; egg.setAttribute('aria-label','Разбить яйцо, ударов '+taps+' из 3'); tapText.textContent='Удары: '+taps+'/3'; dots[taps-1].classList.add('done'); crackSound(); stage.classList.add('shake'); if(taps<3) setTimeout(()=>stage.classList.remove('shake'),600); if(taps===1){storyText.textContent='Ещё два касания — скорлупа уже трещит!';} if(taps===2){storyText.textContent='Почти получилось. Одно последнее касание!';} if(taps===3) hatch(); });
+      replay.addEventListener('click',reset); again.addEventListener('click',reset);
+      if(localStorage.getItem('vanya-expedition-complete')) completeBadge.classList.add('show');
+    })();
+  </script>
+</body>
+</html>
