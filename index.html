@@ -236,7 +236,7 @@
       function hatch(){
         clearSequence(); egg.classList.remove('active'); tapCount.classList.remove('show'); stage.classList.add('shake'); showNote('Скорлупа трескается','Кто же спрятался внутри?');
         schedule(()=>{ stage.classList.remove('shake'); stage.classList.add('hatching','dinos-found'); setProgress(3); showNote('Невероятная находка','В одном яйце — целых пять динозавров!'); roar(); tinyMusic(); },1450);
-        schedule(()=>{ showNote('Экспедиция Вани','Вот как Ваня нашёл пятерых новых друзей.'); },4100);
+        schedule(()=>{ showNote('Экспедиция Вани','Вот как Ваня нашёл пять новых друзей.'); },4100);
         schedule(()=>{ showNote('Последний сюрприз','Динозавры привезли приглашение на праздник!'); },6450);
         schedule(()=>{ hideNote(); setProgress(4); stage.classList.add('finale-visible'); finale.classList.add('show'); progress.classList.remove('show'); localStorage.setItem('vanya-expedition-complete','1'); },8450);
       }
